@@ -74,14 +74,58 @@ h1 {
     border-color: #667eea;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .container {
-        padding: 30px 20px;
-        margin: 10px;
+        padding: 25px 20px;
+        margin: 15px;
+        max-width: 350px;
+    }
+    
+    h1 {
+        font-size: 22px;
+    }
+    
+    .bio {
+        font-size: 14px;
+    }
+    
+    .link-item {
+        padding: 12px 18px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px 15px;
+        margin: 5px;
+        border-radius: 15px;
     }
     
     .avatar {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+    
+    .bio {
+        font-size: 14px;
+    }
+    
+    .links {
+        gap: 12px;
+    }
+    
+    .link-item {
+        padding: 12px 15px;
+        border-radius: 10px;
+        font-size: 14px;
     }
 }
