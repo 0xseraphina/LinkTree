@@ -1,31 +1,51 @@
-const links = [
-    {
-        title: "🌟 My Portfolio",
-        url: "https://portfolio.example.com",
-        description: "Check out my work"
+let config = {
+    profile: {
+        username: "@myusername",
+        bio: "Developer & Creator 🚀",
+        avatar: "https://via.placeholder.com/200x200/667eea/ffffff?text=Avatar"
     },
-    {
-        title: "📱 Twitter",
-        url: "https://twitter.com/username",
-        description: "Follow me on Twitter"
-    },
-    {
-        title: "💼 LinkedIn",
-        url: "https://linkedin.com/in/username",
-        description: "Connect with me professionally"
-    },
-    {
-        title: "📧 Contact Me",
-        url: "mailto:hello@example.com",
-        description: "Send me an email"
+    links: [
+        {
+            title: "🌟 My Portfolio",
+            url: "https://portfolio.example.com",
+            description: "Check out my work"
+        },
+        {
+            title: "📱 Twitter",
+            url: "https://twitter.com/username",
+            description: "Follow me on Twitter"
+        },
+        {
+            title: "💼 LinkedIn",
+            url: "https://linkedin.com/in/username",
+            description: "Connect with me professionally"
+        },
+        {
+            title: "📧 Contact Me",
+            url: "mailto:hello@example.com",
+            description: "Send me an email"
+        }
+    ],
+    analytics: {
+        trackClicks: true
     }
-];
+};
+
+async function loadConfig() {
+    try {
+        const response = await fetch('./config.json');
+        const configData = await response.json();
+        config = { ...config, ...configData };
+    } catch (error) {
+        console.log('Using default config');
+    }
+}
 
 function generateLinks() {
     const linksContainer = document.querySelector('.links');
     linksContainer.innerHTML = '';
     
-    links.forEach(link => {
+    config.links.forEach(link => {
         const linkElement = document.createElement('a');
         linkElement.href = link.url;
         linkElement.className = 'link-item';
@@ -34,7 +54,9 @@ function generateLinks() {
         linkElement.innerHTML = `<span>${link.title}</span>`;
         
         linkElement.addEventListener('click', () => {
-            trackClick(link.title);
+            if (config.analytics && config.analytics.trackClicks) {
+                trackClick(link.title);
+            }
         });
         
         linksContainer.appendChild(linkElement);
@@ -46,18 +68,43 @@ function trackClick(linkTitle) {
 }
 
 function updateProfile() {
-    const profileData = {
-        username: "@myusername",
-        bio: "Developer & Creator 🚀",
-        avatar: "https://via.placeholder.com/200x200/667eea/ffffff?text=Avatar"
-    };
-    
-    document.querySelector('h1').textContent = profileData.username;
-    document.querySelector('.bio').textContent = profileData.bio;
-    document.querySelector('.avatar').src = profileData.avatar;
+    if (config.profile) {
+        document.querySelector('h1').textContent = config.profile.username;
+        document.querySelector('.bio').textContent = config.profile.bio;
+        document.querySelector('.avatar').src = config.profile.avatar;
+    }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const themeToggle = document.getElementById('themeToggle');
+    
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        themeToggle.textContent = '☀️';
+    }
+    
+    themeToggle.addEventListener('click', toggleTheme);
+}
+
+function toggleTheme() {
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    
+    body.classList.toggle('dark-theme');
+    
+    if (body.classList.contains('dark-theme')) {
+        themeToggle.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        themeToggle.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadConfig();
     generateLinks();
     updateProfile();
+    initTheme();
 });

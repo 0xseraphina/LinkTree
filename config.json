@@ -1,0 +1,42 @@
+{
+  "profile": {
+    "username": "@myusername",
+    "bio": "Developer & Creator 🚀",
+    "avatar": "https://via.placeholder.com/200x200/667eea/ffffff?text=Avatar"
+  },
+  "links": [
+    {
+      "title": "🌟 My Portfolio",
+      "url": "https://portfolio.example.com",
+      "description": "Check out my work"
+    },
+    {
+      "title": "📱 Twitter",
+      "url": "https://twitter.com/username",
+      "description": "Follow me on Twitter"
+    },
+    {
+      "title": "💼 LinkedIn", 
+      "url": "https://linkedin.com/in/username",
+      "description": "Connect with me professionally"
+    },
+    {
+      "title": "📧 Contact Me",
+      "url": "mailto:hello@example.com",
+      "description": "Send me an email"
+    },
+    {
+      "title": "🎵 Spotify",
+      "url": "https://open.spotify.com/user/username",
+      "description": "Listen to my playlists"
+    }
+  ],
+  "theme": {
+    "defaultMode": "light",
+    "allowToggle": true
+  },
+  "analytics": {
+    "trackClicks": true,
+    "provider": "console"
+  }
+}
