@@ -1,25 +1,68 @@
 # LinkTree
 
-A simple personal link aggregation page.
+A simple, customizable personal link aggregation page inspired by Linktree.
 
 ## Features
 
-- Clean, minimal design
-- Responsive layout
-- Easy to customize
-- No dependencies
+- 🌟 Clean, modern design with glass-morphism effects
+- 📱 Fully responsive layout (mobile-first)
+- 🌙 Dark/Light theme toggle with localStorage persistence
+- ⚙️ JSON-based configuration system
+- 📊 Click tracking and analytics support
+- 🎨 Smooth animations and hover effects
+- 🚀 No external dependencies, pure vanilla JS
 
 ## Usage
 
-Just open `index.html` in your browser.
+1. Open `index.html` in your browser
+2. Customize your profile and links in `config.json`
+3. Deploy to any static hosting service
 
-To customize:
-1. Update the profile info in `index.html`
-2. Modify links in the links section
-3. Adjust colors in `style.css` if needed
+## Configuration
 
-## TODO
+Edit `config.json` to customize:
 
-- [ ] Add more link options
-- [ ] Theme customization
-- [ ] Analytics integration
+```json
+{
+  "profile": {
+    "username": "@yourusername",
+    "bio": "Your bio here",
+    "avatar": "path/to/your/avatar.jpg"
+  },
+  "links": [
+    {
+      "title": "🌟 Your Link",
+      "url": "https://example.com",
+      "description": "Link description"
+    }
+  ],
+  "theme": {
+    "defaultMode": "light",
+    "allowToggle": true
+  },
+  "analytics": {
+    "trackClicks": true
+  }
+}
+```
+
+## File Structure
+
+```
+LinkTree/
+├── index.html      # Main HTML structure
+├── style.css       # Styles with theme support
+├── script.js       # JavaScript functionality
+└── config.json     # Configuration file
+```
+
+## Browser Support
+
+Works in all modern browsers that support:
+- CSS Grid and Flexbox
+- ES6+ JavaScript features
+- CSS custom properties (variables)
+
+## License
+
+MIT License - feel free to use and modify!

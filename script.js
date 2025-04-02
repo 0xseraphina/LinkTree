@@ -45,13 +45,14 @@ function generateLinks() {
     const linksContainer = document.querySelector('.links');
     linksContainer.innerHTML = '';
     
-    config.links.forEach(link => {
+    config.links.forEach((link, index) => {
         const linkElement = document.createElement('a');
         linkElement.href = link.url;
         linkElement.className = 'link-item';
         linkElement.target = '_blank';
         linkElement.rel = 'noopener noreferrer';
         linkElement.innerHTML = `<span>${link.title}</span>`;
+        linkElement.style.animationDelay = `${0.6 + (index * 0.1)}s`;
         
         linkElement.addEventListener('click', () => {
             if (config.analytics && config.analytics.trackClicks) {
