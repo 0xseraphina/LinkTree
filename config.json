@@ -8,27 +8,38 @@
     {
       "title": "🌟 My Portfolio",
       "url": "https://portfolio.example.com",
-      "description": "Check out my work"
+      "description": "Check out my work",
+      "icon": "🌟"
     },
     {
-      "title": "📱 Twitter",
-      "url": "https://twitter.com/username",
-      "description": "Follow me on Twitter"
+      "title": "Twitter",
+      "url": "https://twitter.com/username", 
+      "description": "Follow me on Twitter",
+      "icon": "twitter"
     },
     {
-      "title": "💼 LinkedIn", 
+      "title": "LinkedIn",
       "url": "https://linkedin.com/in/username",
-      "description": "Connect with me professionally"
+      "description": "Connect with me professionally", 
+      "icon": "linkedin"
+    },
+    {
+      "title": "GitHub",
+      "url": "https://github.com/username",
+      "description": "View my code",
+      "icon": "github"
     },
     {
       "title": "📧 Contact Me",
       "url": "mailto:hello@example.com",
-      "description": "Send me an email"
+      "description": "Send me an email",
+      "icon": "📧"
     },
     {
-      "title": "🎵 Spotify",
-      "url": "https://open.spotify.com/user/username",
-      "description": "Listen to my playlists"
+      "title": "Instagram", 
+      "url": "https://instagram.com/username",
+      "description": "Follow my photos",
+      "icon": "instagram"
     }
   ],
   "theme": {
