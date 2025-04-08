@@ -73,7 +73,7 @@ function generateLinks() {
         
         linkElement.addEventListener('click', () => {
             if (config.analytics && config.analytics.trackClicks) {
-                trackClick(link.title);
+                trackClick(link.title, link.url);
             }
         });
         
@@ -81,8 +81,14 @@ function generateLinks() {
     });
 }
 
-function trackClick(linkTitle) {
-    console.log(`Link clicked: ${linkTitle}`);
+let analytics;
+
+function trackClick(linkTitle, linkUrl) {
+    if (analytics) {
+        analytics.trackClick(linkTitle, linkUrl);
+    } else {
+        console.log(`Link clicked: ${linkTitle}`);
+    }
 }
 
 function updateProfile() {
@@ -129,6 +135,11 @@ function showMainContent() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+    // Initialize analytics
+    if (window.LinkAnalytics) {
+        analytics = new window.LinkAnalytics();
+    }
+    
     // Simulate loading time for better UX
     setTimeout(async () => {
         await loadConfig();
@@ -136,5 +147,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         updateProfile();
         initTheme();
         showMainContent();
+        
+        // Create analytics display if enabled
+        if (analytics && config.analytics && config.analytics.trackClicks) {
+            analytics.createStatsDisplay();
+        }
     }, 1200);
 });
