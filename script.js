@@ -67,14 +67,36 @@ function generateLinks() {
             <div class="link-content">
                 <span class="link-icon">${iconHtml}</span>
                 <span class="link-text">${link.title}</span>
+                <button class="copy-btn" data-url="${link.url}" title="Copy link">📋</button>
+                ${link.description ? `<div class="tooltip">${link.description}</div>` : ''}
             </div>
         `;
         linkElement.style.animationDelay = `${0.6 + (index * 0.1)}s`;
         
-        linkElement.addEventListener('click', () => {
+        // Add keyboard navigation
+        linkElement.setAttribute('tabindex', '0');
+        linkElement.setAttribute('role', 'button');
+        linkElement.setAttribute('aria-label', `${link.title} - ${link.description || 'External link'}`);
+        
+        linkElement.addEventListener('click', (e) => {
             if (config.analytics && config.analytics.trackClicks) {
                 trackClick(link.title, link.url);
             }
+        });
+        
+        linkElement.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                linkElement.click();
+            }
+        });
+        
+        // Add copy functionality
+        const copyBtn = linkElement.querySelector('.copy-btn');
+        copyBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            copyToClipboard(link.url, copyBtn);
         });
         
         linksContainer.appendChild(linkElement);
@@ -88,6 +110,28 @@ function trackClick(linkTitle, linkUrl) {
         analytics.trackClick(linkTitle, linkUrl);
     } else {
         console.log(`Link clicked: ${linkTitle}`);
+    }
+}
+
+async function copyToClipboard(url, button) {
+    try {
+        await navigator.clipboard.writeText(url);
+        const originalText = button.textContent;
+        button.textContent = '✅';
+        button.style.transform = 'scale(1.2)';
+        
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.style.transform = 'scale(1)';
+        }, 1500);
+        
+        console.log('Link copied to clipboard:', url);
+    } catch (err) {
+        console.error('Failed to copy link:', err);
+        button.textContent = '❌';
+        setTimeout(() => {
+            button.textContent = '📋';
+        }, 1500);
     }
 }
 
