@@ -5,12 +5,20 @@ A simple, customizable personal link aggregation page inspired by Linktree.
 ## Features
 
 - 🌟 Clean, modern design with glass-morphism effects
-- 📱 Fully responsive layout (mobile-first)
+- 📱 Fully responsive layout (mobile-first design)
 - 🌙 Dark/Light theme toggle with localStorage persistence
-- ⚙️ JSON-based configuration system
-- 📊 Click tracking and analytics support
-- 🎨 Smooth animations and hover effects
-- 🚀 No external dependencies, pure vanilla JS
+- ⚙️ JSON-based configuration system for easy customization
+- 📊 Built-in click tracking and analytics dashboard
+- 🎨 Smooth animations and micro-interactions
+- ♿ Full keyboard navigation and accessibility support
+- 💡 Interactive tooltips with link descriptions
+- 📋 One-click copy link functionality
+- 🎯 Social media icon integration (Twitter, GitHub, LinkedIn, etc.)
+- 📡 PWA support with offline functionality
+- 🎭 CSS custom properties for easy theming
+- ⚡ Service worker for fast loading and offline access
+- 🔍 SEO optimized with Open Graph and Twitter Cards
+- 🚀 Zero external dependencies, pure vanilla JS
 
 ## Usage
 
@@ -51,10 +59,57 @@ Edit `config.json` to customize:
 ```
 LinkTree/
 ├── index.html      # Main HTML structure
-├── style.css       # Styles with theme support
-├── script.js       # JavaScript functionality
-└── config.json     # Configuration file
+├── style.css       # Styles with CSS custom properties
+├── script.js       # Core JavaScript functionality
+├── analytics.js    # Analytics and click tracking
+├── config.json     # Configuration file
+├── manifest.json   # PWA manifest
+├── sw.js          # Service worker for offline support
+└── README.md      # Documentation
 ```
+
+## Installation & Setup
+
+1. Clone or download the repository
+2. Customize `config.json` with your information
+3. Open `index.html` in a web browser or deploy to any static hosting service
+4. For PWA features, serve over HTTPS
+
+## Customization
+
+### Theme Colors
+
+Modify CSS custom properties in `style.css`:
+
+```css
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --border-light: #667eea;
+    /* ... other variables */
+}
+```
+
+### Analytics
+
+Enable/disable analytics in `config.json`:
+
+```json
+{
+  "analytics": {
+    "trackClicks": true,
+    "provider": "console"
+  }
+}
+```
+
+### Social Icons
+
+Supported icon types:
+- `twitter` - Twitter/X icon
+- `linkedin` - LinkedIn icon  
+- `github` - GitHub icon
+- `instagram` - Instagram icon
+- Any emoji for custom icons
 
 ## Browser Support
 

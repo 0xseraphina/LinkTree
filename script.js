@@ -178,7 +178,22 @@ function showMainContent() {
     mainContainer.style.display = 'block';
 }
 
+function registerServiceWorker() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js')
+            .then((registration) => {
+                console.log('SW registered:', registration);
+            })
+            .catch((error) => {
+                console.log('SW registration failed:', error);
+            });
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
+    // Register service worker for offline support
+    registerServiceWorker();
+    
     // Initialize analytics
     if (window.LinkAnalytics) {
         analytics = new window.LinkAnalytics();

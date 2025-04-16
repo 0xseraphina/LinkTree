@@ -40,6 +40,18 @@
       "url": "https://instagram.com/username",
       "description": "Follow my photos",
       "icon": "instagram"
+    },
+    {
+      "title": "YouTube",
+      "url": "https://youtube.com/@username",
+      "description": "Subscribe to my channel",
+      "icon": "🎥"
+    },
+    {
+      "title": "Discord Server",
+      "url": "https://discord.gg/example", 
+      "description": "Join our community",
+      "icon": "💬"
     }
   ],
   "theme": {
